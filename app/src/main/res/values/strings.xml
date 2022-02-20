@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Perlu Dilindungi</string>
+    <string name="province">Province</string>
+    <string name="title_activity_bottom_navigation">bottom_navigation</string>
+    <string name="title_berita">Berita</string>
+    <string name="title_faskes">Faskes</string>
+    <string name="title_bookmark">Bookmark</string>
 </resources>
