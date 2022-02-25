@@ -5,4 +5,6 @@
     <string name="title_berita">Berita</string>
     <string name="title_faskes">Faskes</string>
     <string name="title_bookmark">Bookmark</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
