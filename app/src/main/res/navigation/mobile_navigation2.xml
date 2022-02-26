@@ -7,9 +7,9 @@
 
 <!--    <fragment-->
 <!--        android:id="@+id/navigation_home"-->
-<!--        android:name="com.example.perludilindungi.ui.berita.BeritaFragment"-->
+<!--        android:name="com.example.perludilindungi.ui.detailfaskes.DetailFaskesFragment"-->
 <!--        android:label="@string/title_berita"-->
-<!--        tools:layout="@layout/fragment_berita" />-->
+<!--        tools:layout="@layout/fragment_detail_faskes" />-->
 
     <fragment
         android:id="@+id/navigation_home"
