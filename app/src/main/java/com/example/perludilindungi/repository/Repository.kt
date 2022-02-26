@@ -17,5 +17,4 @@ class Repository {
     suspend fun getFaskes(province: String, city: String): FaskesResponse{
         return RetrofitClient.daftarFaskesInstance.getDaftarFaskes(province, city)
     }
-
 }

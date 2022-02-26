@@ -1,5 +1,6 @@
 package com.example.perludilindungi
 
+import com.example.perludilindungi.api.CheckInApi
 import com.example.perludilindungi.api.CityApi
 import com.example.perludilindungi.api.FaskesApi
 import com.example.perludilindungi.api.ProvinceApi
@@ -33,4 +34,7 @@ object RetrofitClient {
         retrofit.create(FaskesApi::class.java)
     }
 
+    val checkInInstance: CheckInApi by lazy {
+        retrofit.create(CheckInApi::class.java)
+    }
 }

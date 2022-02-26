@@ -17,32 +17,41 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.perludilindungi.R
+import com.example.perludilindungi.RetrofitClient
+import com.example.perludilindungi.databinding.ActivityQrscannerBinding
 import com.google.android.gms.location.*
 import com.google.zxing.integration.android.IntentIntegrator
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 class QRScanner : AppCompatActivity(), SensorEventListener {
 
     private lateinit var sensorManager: SensorManager
     private var temperature: Sensor? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var latitude: Float = 0.toFloat()
-    private var longitude: Float = 0.toFloat()
+    private var latitude: Float = 10.toFloat()
+    private var longitude: Float = 10.toFloat()
+    private lateinit var binding: ActivityQrscannerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_qrscanner)
-        val qrButton: ImageButton = findViewById(R.id.qr_button)
-        val temp: TextView = findViewById(R.id.degree)
+        binding = ActivityQrscannerBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         temperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)
-        temp.text = "${temperature.toString()}\u2103"
+        binding.degree.text = "${temperature.toString()}\u2103"
 
-        qrButton.setOnClickListener {
+        binding.qrButton.setOnClickListener {
             val intentIntegrator = IntentIntegrator(this)
             intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
             intentIntegrator.initiateScan()
@@ -53,12 +62,47 @@ class QRScanner : AppCompatActivity(), SensorEventListener {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(resultCode, data)
         if (result.contents != null) {
+            // get location
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
             getLastLocation()
-            AlertDialog.Builder(this)
-                .setMessage("Hasil = ${result.contents}?")
-                .create()
-                .show()
+
+            //post check in
+            val jsonObject = JSONObject()
+            jsonObject.put("qrCode", result.contents)
+            jsonObject.put("latitude", latitude.toString())
+            jsonObject.put("longitude", longitude.toString())
+
+            // Convert JSONObject to String
+            val jsonObjectString = jsonObject.toString()
+
+            // Create RequestBody
+            val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+
+
+            val service = RetrofitClient.checkInInstance
+            CoroutineScope(Dispatchers.IO).launch {
+                // Do the POST request and get response
+                val response = service.postCheckIn(requestBody)
+
+                withContext(Dispatchers.Main) {
+                    if (response.success == true) {
+                        Log.d("Hasil", response.data.toString())
+                        if (response.data.userStatus == "green"){
+                            binding.statusImage.setImageResource(R.drawable.ic_resource_true)
+                            binding.status.text = "Berhasil"
+                        }
+                        else{
+                            binding.statusImage.setImageResource(R.drawable.ic_resource_false)
+                            binding.status.text = "Gagal"
+                            binding.keterangan.text = response.data.reason
+                        }
+                    } else {
+                        binding.statusImage.setImageResource(R.drawable.ic_resource_false)
+                        binding.status.text = "Gagal"
+                        binding.keterangan.text = response.message
+                    }
+                }
+            }
         }
     }
 
