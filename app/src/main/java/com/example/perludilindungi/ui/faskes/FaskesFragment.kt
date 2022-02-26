@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.perludilindungi.R
@@ -53,6 +51,14 @@ class FaskesFragment : Fragment() {
                 )
                 binding.autoCompleteTextViewCity.setAdapter(arrayAdapter)
                 binding.autoCompleteTextViewCity.text.clear()
+            }
+        }
+
+        binding.autoCompleteTextViewCity.setOnItemClickListener { adapterView, view, i, l ->
+            val prov: String = binding.autoCompleteTextViewProvince.text.toString()
+            viewModel.getDaftarFaskes(prov, cities[i])
+            viewModel.faskesResponse.observe(viewLifecycleOwner) { response ->
+                Log.d("Response", response.data[0].nama.toString())
             }
         }
     }
