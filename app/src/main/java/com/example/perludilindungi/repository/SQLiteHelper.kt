@@ -1,4 +1,4 @@
-package com.example.perludilindungi.models
+package com.example.perludilindungi.repository
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
