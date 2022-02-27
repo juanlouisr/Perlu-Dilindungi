@@ -1,6 +1,5 @@
 package com.example.perludilindungi.ui.detailfaskes
 
-import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,16 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.example.perludilindungi.CreateDBApplication
 import com.example.perludilindungi.R
 import com.example.perludilindungi.databinding.FragmentDetailFaskesBinding
-import com.example.perludilindungi.models.FeedReaderContract
-import com.example.perludilindungi.models.SQLiteHelper
+import com.example.perludilindungi.models.Faskes
+import com.example.perludilindungi.models.VaksinInfo
+import com.example.perludilindungi.room.BookmarkFaskesViewModel
+import com.example.perludilindungi.room.BookmarkFaskesViewModelFactory
 
 
 class DetailFaskesFragment : Fragment() {
 
     private var _binding: FragmentDetailFaskesBinding? = null
     private val binding get() = _binding!!
+    private val faskes = Faskes(Companion.id, kode, nama_faskes, kota, provinsi, alamat, latitude, longitude, no_telp, jenis_faskes, kelas_rs , status, detail, source_data)
+    private val viewModel: BookmarkFaskesViewModel by activityViewModels {
+        BookmarkFaskesViewModelFactory(
+            (activity?.application as CreateDBApplication).database.bookmarkFaskesDao()
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +39,8 @@ class DetailFaskesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Masukkin data dari daftar faskes
 
+        // Masukkin data dari daftar faskes
         binding.namaFaskes.text = nama_faskes
         binding.noKode.text = kode
         binding.tipeFaskes.text = jenis_faskes
@@ -41,25 +50,28 @@ class DetailFaskesFragment : Fragment() {
         if (status != "Siap Vaksinasi") {
             binding.statusImage.setImageResource(R.drawable.ic_resource_false)
         }
-//        if (!dataNotInDB()) {
-//            binding.bookmark.text = "- UnBookmark"
-//        }
+        if (!checkIsBookmarked()){
+            binding.bookmark.text = "- Bookmark"
+        }
+        else{
+            binding.bookmark.text = "+ Bookmark"
+        }
 
         //Google Map
         binding.googleMap.setOnClickListener {
             intentToGoogleMaps()
         }
 
-//        //Bookmark
-//        binding.bookmark.setOnClickListener {
-//            if (binding.bookmark.text == "+ Bookmark") {
-//                insertToDB()
-//                binding.bookmark.text = "- Bookmark"
-//            } else {
-//                deleteFromDB()
-//                binding.bookmark.text = "+ Bookmark"
-//            }
-//        }
+        //Bookmark
+        binding.bookmark.setOnClickListener {
+            if (binding.bookmark.text == "+ Bookmark") {
+                addNewBookmark()
+                binding.bookmark.text = "- Bookmark"
+            } else {
+                deleteBookmark()
+                binding.bookmark.text = "+ Bookmark"
+            }
+        }
 
     }
 
@@ -75,69 +87,16 @@ class DetailFaskesFragment : Fragment() {
         startActivity(mapIntent)
     }
 
-    private fun dataNotInDB(): Boolean {
-        val dbHelper = this.activity?.let { SQLiteHelper(it.applicationContext) }
-        val db = dbHelper?.readableDatabase
-
-        // Define a projection that specifies which columns from the database
-        // you will actually use after this query.
-        val projection = arrayOf(FeedReaderContract.FeedEntry.COLUMN_NAME_ID)
-
-        // Filter results WHERE "title" = 'My Title'
-        val selection = "${FeedReaderContract.FeedEntry.COLUMN_NAME_ID} = ?"
-        val selectionArgs = arrayOf(id.toString())
-
-        val cursor = db?.query(
-            FeedReaderContract.FeedEntry.TABLE_NAME,   // The table to query
-            projection,                 // The array of columns to return (pass null to get all)
-            selection,                  // The columns for the WHERE clause
-            selectionArgs,              // The values for the WHERE clause
-            null,               // don't group the rows
-            null,                // don't filter by row groups
-            null                // The sort order
-        )
-
-        return cursor == null;
+    private fun checkIsBookmarked(): Boolean {
+        return viewModel.checkBookmark(id)
     }
 
-    private fun deleteFromDB() {
-        val dbHelper = this.activity?.let { SQLiteHelper(it.applicationContext) }
-        val db = dbHelper?.readableDatabase
-        // Define 'where' part of query.
-        val selection = "${FeedReaderContract.FeedEntry.COLUMN_NAME_ID} LIKE ?"
-        // Specify arguments in placeholder order.
-        val selectionArgs = arrayOf(id.toString())
-        // Issue SQL statement.
-        db?.delete(FeedReaderContract.FeedEntry.TABLE_NAME, selection, selectionArgs)
+    private fun addNewBookmark() {
+        viewModel.addNewBookmark(faskes)
     }
 
-    private fun insertToDB() {
-        val dbHelper = this.activity?.let { SQLiteHelper(it.applicationContext) }
-        val db = dbHelper?.writableDatabase
-
-        val values = ContentValues().apply {
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_ID, Companion.id)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_KODE, kode)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_NAMA, nama_faskes)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_KOTA, kota)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_PROVINSI, provinsi)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_ALAMAT, alamat)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_LATITUDE, latitude)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_LONGITUDE, longitude)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_TELP, no_telp)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_JENIS_VASKES, jenis_faskes)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_KELAS_RS, kelas_rs)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_STATUS, status)
-            put(FeedReaderContract.FeedEntry.COLUMN_NAME_SOURCE_DATA, source_data)
-        }
-
-        db?.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values)
-    }
-
-    override fun onDestroy() {
-        val dbHelper = this.activity?.let { SQLiteHelper(it.applicationContext) }
-        dbHelper?.close()
-        super.onDestroy()
+    private fun deleteBookmark() {
+        viewModel.deleteBookmark(faskes)
     }
 
     companion object {
@@ -155,6 +114,7 @@ class DetailFaskesFragment : Fragment() {
         private const val status = "Siap Vaksinasi"
         private const val latitude = "-6.2101653"
         private const val longitude = "106.8004706"
+        private val detail = listOf(VaksinInfo(1, "test", "test", 1,1,1,1,1,1,1,1,1,"test"))
     }
 }
 

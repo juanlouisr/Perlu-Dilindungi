@@ -11,7 +11,7 @@ data class Faskes(
     val alamat: String,
     val latitude: String,
     val longitude: String,
-    val telp: String?,
+    val telp: String,
     val jenis_faskes: String ,
     val kelas_rs: String,
     val status: String,
