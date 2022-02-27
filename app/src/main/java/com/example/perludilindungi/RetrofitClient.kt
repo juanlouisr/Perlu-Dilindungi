@@ -1,9 +1,6 @@
 package com.example.perludilindungi
 
-import com.example.perludilindungi.api.CheckInApi
-import com.example.perludilindungi.api.CityApi
-import com.example.perludilindungi.api.FaskesApi
-import com.example.perludilindungi.api.ProvinceApi
+import com.example.perludilindungi.api.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -18,8 +15,8 @@ object RetrofitClient {
             .build()
 
     }
-    val instance: Api by lazy {
-        retrofit.create(Api::class.java)
+    val newsInstance: NewsApi by lazy {
+        retrofit.create(NewsApi::class.java)
     }
 
     val provInstance: ProvinceApi by lazy {

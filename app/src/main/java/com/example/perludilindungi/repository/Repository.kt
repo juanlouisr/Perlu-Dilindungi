@@ -3,6 +3,7 @@ package com.example.perludilindungi.repository
 import com.example.perludilindungi.RetrofitClient
 import com.example.perludilindungi.models.CityResponse
 import com.example.perludilindungi.models.FaskesResponse
+import com.example.perludilindungi.models.NewsResponse
 import com.example.perludilindungi.models.ProvinceResponse
 
 class Repository {
@@ -16,5 +17,9 @@ class Repository {
 
     suspend fun getFaskes(province: String, city: String): FaskesResponse{
         return RetrofitClient.daftarFaskesInstance.getDaftarFaskes(province, city)
+    }
+
+    suspend fun getNews(): NewsResponse{
+        return RetrofitClient.newsInstance.getNews()
     }
 }

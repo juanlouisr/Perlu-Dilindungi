@@ -1,13 +1,21 @@
 package com.example.perludilindungi.ui.berita
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.perludilindungi.models.NewsResponse
+import com.example.perludilindungi.repository.Repository
+import kotlinx.coroutines.launch
 
-class BeritaViewModel : ViewModel() {
+class BeritaViewModel(private val repository : Repository
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is berita Fragment"
+    val newsResponse: MutableLiveData<NewsResponse>  = MutableLiveData()
+
+    fun getNews(){
+        viewModelScope.launch {
+            val response: NewsResponse = repository.getNews()
+            newsResponse.value = response
+        }
     }
-    val text: LiveData<String> = _text
 }
