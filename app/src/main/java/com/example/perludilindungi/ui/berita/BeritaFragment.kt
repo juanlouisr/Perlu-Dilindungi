@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.perludilindungi.databinding.FragmentBeritaBinding
 import com.example.perludilindungi.models.News
 import com.example.perludilindungi.repository.Repository
@@ -33,9 +35,11 @@ class BeritaFragment : Fragment() {
                 override fun oncClick(position: Int) {
                     //Toast.makeText(requireContext(), "item no : $position", Toast.LENGTH_SHORT)
                     //    .show()
-                    val intent = Intent(requireContext(), DetailBeritaActivity::class.java)
-                    intent.putExtra("newsUrl", listResult[position].guid)
-                    startActivity(intent)
+                    //val intent = Intent(requireContext(), DetailBeritaActivity::class.java)
+                    //intent.putExtra("newsUrl", listResult[position].guid)
+                    //startActivity(intent)
+                    val action = BeritaFragmentDirections.actionNavigationBeritaToDetailBeritaFragment(listResult[position].guid)
+                    Navigation.findNavController(binding.root).navigate(action)
                 }
             })
         }

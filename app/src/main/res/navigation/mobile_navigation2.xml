@@ -9,7 +9,11 @@
         android:id="@+id/navigation_berita"
         android:name="com.example.perludilindungi.ui.berita.BeritaFragment"
         android:label="@string/title_berita"
-        tools:layout="@layout/fragment_berita" />
+        tools:layout="@layout/fragment_berita" >
+        <action
+            android:id="@+id/action_navigation_berita_to_detailBeritaFragment"
+            app:destination="@id/detailBeritaFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_faskes"
@@ -38,4 +42,18 @@
             android:name="faskes"
             app:argType="com.example.perludilindungi.models.Faskes" />
     </fragment>
+
+    <fragment
+        android:id="@+id/detailBeritaFragment"
+        android:name="com.example.perludilindungi.ui.berita.DetailBeritaFragment"
+        android:label="fragment_detail_berita"
+        tools:layout="@layout/fragment_detail_berita" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailBeritaFragment_to_navigation_berita"
+            app:destination="@id/navigation_berita" />
+    </fragment>
+
 </navigation>
