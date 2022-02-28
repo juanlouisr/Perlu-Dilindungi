@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/faskes_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxWidth="350dp"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/black"
+    app:strokeWidth="1dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/faskes_card_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_faskescard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/tview_nama_faskes"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="Puskesmas Ciputat Timur"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tview_jenis_faskes"
+                android:layout_width="120dp"
+                android:layout_height="22dp"
+                android:background="@color/purple_200"
+                android:gravity="center"
+                android:text="RUMAH SAKIT"
+                android:textColor="#311B92"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tview_alamat_faskes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="10dp"
+            android:text="Gedung DPR-RI, JL. Gatot Subroto, RT.1/RW.3, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270, Indonesia"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/tview_telp_faskes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/relative_layout_faskescard" />
+
+        <TextView
+            android:id="@+id/tview_telp_faskes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telp :"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tview_kode_faskes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kode :"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

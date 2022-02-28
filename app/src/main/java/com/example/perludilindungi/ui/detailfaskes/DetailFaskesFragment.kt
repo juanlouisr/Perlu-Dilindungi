@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import com.example.perludilindungi.CreateDBApplication
 import com.example.perludilindungi.R
 import com.example.perludilindungi.databinding.FragmentDetailFaskesBinding
@@ -19,9 +20,11 @@ import com.example.perludilindungi.room.BookmarkFaskesViewModelFactory
 
 class DetailFaskesFragment : Fragment() {
 
+    val args: DetailFaskesFragmentArgs by navArgs()
+
     private var _binding: FragmentDetailFaskesBinding? = null
     private val binding get() = _binding!!
-    private val faskes = Faskes(Companion.id, kode, nama_faskes, kota, provinsi, alamat, latitude, longitude, no_telp, jenis_faskes, kelas_rs , status, detail, source_data)
+    private lateinit var faskes: Faskes
     private val viewModel: BookmarkFaskesViewModel by activityViewModels {
         BookmarkFaskesViewModelFactory(
             (activity?.application as CreateDBApplication).database.bookmarkFaskesDao()
@@ -34,19 +37,19 @@ class DetailFaskesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDetailFaskesBinding.inflate(inflater, container, false)
+        faskes = args.faskes
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // Masukkin data dari daftar faskes
-        binding.namaFaskes.text = nama_faskes
-        binding.noKode.text = kode
-        binding.tipeFaskes.text = jenis_faskes
-        binding.alamat.text = alamat
-        binding.noTelp.text = no_telp
-        binding.status.text = status
+        binding.namaFaskes.text = faskes.nama
+        binding.noKode.text = faskes.kode
+        binding.tipeFaskes.text = faskes.jenis_faskes
+        binding.alamat.text = faskes.alamat
+        binding.noTelp.text = faskes.telp
+        binding.status.text = faskes.status
         if (status != "Siap Vaksinasi") {
             binding.statusImage.setImageResource(R.drawable.ic_resource_false)
         }

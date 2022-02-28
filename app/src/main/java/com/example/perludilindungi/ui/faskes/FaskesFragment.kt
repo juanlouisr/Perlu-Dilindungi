@@ -1,5 +1,6 @@
 package com.example.perludilindungi.ui.faskes
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,11 +9,14 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.perludilindungi.R
 import com.example.perludilindungi.databinding.FragmentFaskesBinding
+import com.example.perludilindungi.models.Faskes
 import com.example.perludilindungi.repository.Repository
+import com.example.perludilindungi.ui.detailfaskes.DetailFaskesFragment
 
-class FaskesFragment : Fragment() {
+class FaskesFragment : Fragment(R.layout.fragment_faskes) {
 
     private var _binding: FragmentFaskesBinding? = null
     private lateinit var viewModel: FaskesViewModel
@@ -55,10 +59,33 @@ class FaskesFragment : Fragment() {
         }
 
         binding.autoCompleteTextViewCity.setOnItemClickListener { adapterView, view, i, l ->
-            val prov: String = binding.autoCompleteTextViewProvince.text.toString()
+            val prov: String =
+                binding.autoCompleteTextViewProvince.text.toString()
             viewModel.getDaftarFaskes(prov, cities[i])
             viewModel.faskesResponse.observe(viewLifecycleOwner) { response ->
-                Log.d("Response", response.data[0].nama.toString())
+                val daftarFaskes: List<Faskes> = response.data.take(5)
+                val recyclerView = binding.daftarFaskesRecyclerView
+                val adapter = FaskesRecyclerViewAdapter(daftarFaskes)
+                recyclerView.adapter = adapter
+                adapter.setOnItemClickListener(object :
+                    FaskesRecyclerViewAdapter.OnItemClickListener {
+                    override fun onClick(position: Int) {
+                        val intent = Intent(
+                            requireContext(),
+                            DetailFaskesFragment::class.java
+                        )
+                        intent.putExtra("FaskesOBJ", daftarFaskes[position])
+                        val action = FaskesFragmentDirections
+                            .actionNavigationFaskesToDetailFaskesFragment(
+                                daftarFaskes[position]
+                            )
+                        Navigation.findNavController(binding.root).navigate(action)
+//                        Navigation.findNavController(binding.root).navigate(R
+//                            .id.action_navigation_faskes_to_detailFaskesFragment)
+                    }
+                })
+                recyclerView.setHasFixedSize(true)
+//                Log.d("Response", response.data[0].nama.toString())
             }
         }
     }

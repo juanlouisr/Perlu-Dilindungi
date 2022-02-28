@@ -3,29 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@+id/navigation_home">
-
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_home"-->
-<!--        android:name="com.example.perludilindungi.ui.detailfaskes.DetailFaskesFragment"-->
-<!--        android:label="@string/title_berita"-->
-<!--        tools:layout="@layout/fragment_detail_faskes" />-->
+    app:startDestination="@+id/navigation_berita">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_berita"
         android:name="com.example.perludilindungi.ui.berita.BeritaFragment"
         android:label="@string/title_berita"
         tools:layout="@layout/fragment_berita" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_faskes"
         android:name="com.example.perludilindungi.ui.faskes.FaskesFragment"
         android:label="@string/title_faskes"
-        tools:layout="@layout/fragment_faskes" />
+        tools:layout="@layout/fragment_faskes" >
+        <action
+            android:id="@+id/action_navigation_faskes_to_detailFaskesFragment"
+            app:destination="@id/detailFaskesFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_bookmark"
         android:name="com.example.perludilindungi.ui.bookmark.BookmarkFragment"
         android:label="@string/title_bookmark"
         tools:layout="@layout/fragment_bookmark" />
+    <fragment
+        android:id="@+id/detailFaskesFragment"
+        android:name="com.example.perludilindungi.ui.detailfaskes.DetailFaskesFragment"
+        android:label="fragment_detail_faskes"
+        tools:layout="@layout/fragment_detail_faskes" >
+        <action
+            android:id="@+id/action_detailFaskesFragment_to_navigation_faskes2"
+            app:destination="@id/navigation_faskes" />
+        <argument
+            android:name="faskes"
+            app:argType="com.example.perludilindungi.models.Faskes" />
+    </fragment>
 </navigation>
