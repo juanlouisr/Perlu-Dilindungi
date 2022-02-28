@@ -1,5 +1,6 @@
 package com.example.perludilindungi.ui.berita
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,8 +31,11 @@ class BeritaFragment : Fragment() {
             binding.rvNews.adapter = adapter
             adapter.setOnItemClickListener(object : NewsAdapter.onItemClickListener {
                 override fun oncClick(position: Int) {
-                    Toast.makeText(requireContext(), "item no : $position", Toast.LENGTH_SHORT)
-                        .show()
+                    //Toast.makeText(requireContext(), "item no : $position", Toast.LENGTH_SHORT)
+                    //    .show()
+                    val intent = Intent(requireContext(), DetailBeritaActivity::class.java)
+                    intent.putExtra("newsUrl", listResult[position].guid)
+                    startActivity(intent)
                 }
             })
         }

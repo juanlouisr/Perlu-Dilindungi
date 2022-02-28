@@ -22,9 +22,11 @@
         <entry key="..\:/KULIAH/Semester6/PBD/if3210-2022-android-20/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2203125" />
         <entry key="..\:/KULIAH/Semester6/PBD/if3210-2022-android-20/app/src/main/res/drawable/qr_scanner.xml" value="0.2203125" />
         <entry key="..\:/KULIAH/Semester6/PBD/if3210-2022-android-20/app/src/main/res/drawable/rounded_corner.xml" value="0.2203125" />
+        <entry key="..\:/KULIAH/Semester6/PBD/if3210-2022-android-20/app/src/main/res/layout/activity_detail_berita.xml" value="0.20416666666666666" />
         <entry key="..\:/KULIAH/Semester6/PBD/if3210-2022-android-20/app/src/main/res/layout/activity_landing_page.xml" value="0.20416666666666666" />
         <entry key="..\:/KULIAH/Semester6/PBD/if3210-2022-android-20/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/KULIAH/Semester6/PBD/if3210-2022-android-20/app/src/main/res/layout/fragment_berita.xml" value="0.1" />
+        <entry key="..\:/KULIAH/Semester6/PBD/if3210-2022-android-20/app/src/main/res/layout/fragment_detail_berita.xml" value="0.1" />
         <entry key="..\:/KULIAH/Semester6/PBD/if3210-2022-android-20/app/src/main/res/layout/item_news.xml" value="0.10131712259371833" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/PerluDilindungi/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2703125" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/PerluDilindungi/app/src/main/res/drawable/ic_resource_true.xml" value="0.11979166666666667" />
