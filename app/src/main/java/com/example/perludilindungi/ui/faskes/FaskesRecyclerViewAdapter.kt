@@ -55,6 +55,9 @@ class FaskesRecyclerViewAdapter(private val daftarFaskes: List<Faskes>) :
     ) {
         val item = daftarFaskes[position]
         holder.namaFaskes.text = item.nama
+//        when (item.jenis_faskes) {
+//            "PUSKESMAS" ->
+//        }
         if (item.jenis_faskes == "") {
             val layoutParams = holder.jenisFaskes.layoutParams
             layoutParams.width = 0
@@ -71,6 +74,5 @@ class FaskesRecyclerViewAdapter(private val daftarFaskes: List<Faskes>) :
     override fun getItemCount(): Int {
         return daftarFaskes.size
     }
-
 
 }

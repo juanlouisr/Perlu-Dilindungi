@@ -17,11 +17,11 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import com.example.perludilindungi.R
 import com.example.perludilindungi.databinding.FragmentFaskesBinding
 import com.example.perludilindungi.models.ProvinceResponse
 import com.example.perludilindungi.repository.Repository
+import com.example.perludilindungi.ui.list_faskes.ListFaskesFragmentFactory
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.fragment_faskes.*
 import kotlin.math.acos
@@ -42,7 +42,6 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
         super.onResume()
         getNewLocation()
         getLastLocation()
-//        fetchLoc()
         Log.d("Debug", viewModel.latitude.toString())
         Log.d("Debug", viewModel.longitude.toString())
         if (binding.autoCompleteTextViewProvince.text == null || binding
@@ -99,6 +98,8 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
         binding.faskesSearchButton.setOnClickListener {
             fetchFaskes()
         }
+
+
 
         return root
     }
@@ -158,42 +159,6 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
         }
     }
 
-
-    private fun fetchLoc() {
-        val task = fusedLocationProviderClient.lastLocation
-
-        if (activity?.let {
-                ActivityCompat.checkSelfPermission(
-                    it,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-            } != PackageManager.PERMISSION_GRANTED && activity?.let {
-                ActivityCompat.checkSelfPermission(
-                    it,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-            } != PackageManager.PERMISSION_GRANTED
-        ) {
-            activity?.let {
-                ActivityCompat.requestPermissions(
-                    it, arrayOf(
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    ), 101
-                )
-            }
-            return
-        }
-
-        task.addOnSuccessListener {
-            it?.let {
-                viewModel.latitude = it.latitude
-                viewModel.longitude = it.longitude
-                Log.d("Debug", viewModel.latitude.toString())
-                Log.d("Debug", viewModel.longitude.toString())
-            }
-        }
-    }
-
     fun distance(
         lat1: Double,
         lon1: Double,
@@ -221,21 +186,16 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
     }
 
     private fun setupRecyclerView() {
-        val recyclerView = binding.daftarFaskesRecyclerView
-        val adapter = FaskesRecyclerViewAdapter(viewModel.daftarFaskes)
-        recyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object :
-            FaskesRecyclerViewAdapter.OnItemClickListener {
-            override fun onClick(position: Int) {
-                val action = FaskesFragmentDirections
-                    .actionNavigationFaskesToDetailFaskesFragment(
-                        viewModel.daftarFaskes[position]
-                    )
-                Navigation.findNavController(binding.root)
-                    .navigate(action)
-            }
-        })
-        recyclerView.setHasFixedSize(true)
+        val fragmentManager = activity?.supportFragmentManager
+        val fragmentTsx = fragmentManager?.beginTransaction()
+        fragmentTsx?.replace(
+            binding.fragmentContaionerRview.id,
+            ListFaskesFragmentFactory().newFragment(viewModel.daftarFaskes)
+        )
+        fragmentTsx?.commit()
+        if (fragmentTsx == null) {
+            Log.d("Debug", "Null fragmentTSX")
+        }
     }
 
     private fun checkGPSPermission(): Boolean {
