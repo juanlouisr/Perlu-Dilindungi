@@ -5,10 +5,10 @@
     android:id="@+id/faskes_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:maxWidth="350dp"
     android:layout_margin="5dp"
     android:clickable="true"
     android:focusable="true"
+    android:maxWidth="350dp"
     app:cardCornerRadius="30dp"
     app:cardElevation="1dp"
     app:strokeColor="@color/black"
@@ -30,12 +30,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <TextView
                 android:id="@+id/tview_nama_faskes"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:text="Puskesmas Ciputat Timur"
+                android:text="@string/nama_faskes_placeholder"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -44,11 +43,11 @@
                 android:id="@+id/tview_jenis_faskes"
                 android:layout_width="120dp"
                 android:layout_height="22dp"
+                android:layout_alignParentEnd="true"
                 android:background="@color/purple_200"
                 android:gravity="center"
-                android:text="RUMAH SAKIT"
-                android:textColor="#311B92"
-                android:layout_alignParentEnd="true"/>
+                android:text="@string/jenis_faskes_placeholder"
+                android:textColor="#311B92" />
 
         </RelativeLayout>
 
@@ -58,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="10dp"
-            android:text="Gedung DPR-RI, JL. Gatot Subroto, RT.1/RW.3, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270, Indonesia"
+            android:text="@string/alamat_placeholder"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@id/tview_telp_faskes"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +68,7 @@
             android:id="@+id/tview_telp_faskes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Telp :"
+            android:text="@string/telp_faskes_placeholder"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -78,7 +77,7 @@
             android:id="@+id/tview_kode_faskes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kode :"
+            android:text="@string/kode_faskes_placeholder"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
