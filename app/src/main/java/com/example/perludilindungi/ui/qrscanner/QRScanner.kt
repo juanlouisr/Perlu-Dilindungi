@@ -56,6 +56,10 @@ class QRScanner : AppCompatActivity(), SensorEventListener {
             intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
             intentIntegrator.initiateScan()
         }
+
+        binding.backButton.setOnClickListener{
+            onBackPressed()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -64,6 +68,7 @@ class QRScanner : AppCompatActivity(), SensorEventListener {
         if (result.contents != null) {
             // get location
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+            getNewLocation()
             getLastLocation()
 
             //post check in

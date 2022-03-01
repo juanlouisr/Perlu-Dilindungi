@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/qr_scanner" />
+        app:srcCompat="@drawable/ic_qr_scanner" />
 
     <Button
         android:id="@+id/backButton"
@@ -45,8 +45,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:backgroundTint="#EF5DA8"
+        android:textColor="@color/white"
         android:text="Back"
-        app:cornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,7 +58,7 @@
         android:layout_marginEnd="30dp"
         android:width="65dp"
         android:height="65dp"
-        android:background="@drawable/rounded_corner"
+        android:background="@drawable/ic_circle"
         android:gravity="center_vertical|center_horizontal"
         android:text="\u2103"
         android:textSize="20sp"
