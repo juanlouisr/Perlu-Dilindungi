@@ -96,4 +96,9 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="alamat_placeholder">Gedung DPR-RI, JL. Gatot Subroto, RT.1/RW.3, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270, Indonesia</string>
+    <string name="jenis_faskes_placeholder">RUMAH SAKIT</string>
+    <string name="nama_faskes_placeholder">Puskesmas Ciputat Timur</string>
+    <string name="telp_faskes_placeholder">Telp :</string>
+    <string name="kode_faskes_placeholder">Kode :</string>
 </resources>
