@@ -50,7 +50,7 @@ class DetailFaskesFragment : Fragment() {
         binding.alamat.text = faskes.alamat
         binding.noTelp.text = faskes.telp
         binding.status.text = faskes.status
-        if (status != "Siap Vaksinasi") {
+        if (faskes.status != "Siap Vaksinasi") {
             binding.statusImage.setImageResource(R.drawable.ic_resource_false)
         }
         if (!checkIsBookmarked()){
@@ -84,7 +84,8 @@ class DetailFaskesFragment : Fragment() {
     }
 
     private fun intentToGoogleMaps() {
-        val gmmIntentUri = Uri.parse("geo:${latitude},${longitude}?q=${nama_faskes}")
+        val gmmIntentUri = Uri.parse("geo:${faskes.latitude}," +
+                "${faskes.longitude}?q=${faskes.nama}")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)
@@ -102,22 +103,5 @@ class DetailFaskesFragment : Fragment() {
         viewModel.deleteBookmark(faskes)
     }
 
-    companion object {
-        private const val id = 2725
-        private const val kota = "KOTA ADM. JAKARTA PUSAT"
-        private const val provinsi = "DKI JAKARTA"
-        private const val kelas_rs = "1"
-        private const val source_data = "Control Tower KPCPEN"
-        private const val nama_faskes = "KLINIK DPR RI"
-        private const val kode = "N0001702"
-        private const val jenis_faskes = "KLINIK"
-        private const val alamat =
-            "Gedung DPR-RI, JL. Gatot Subroto, RT.1/RW.3, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270, Indonesia"
-        private const val no_telp = "(021) 5715801"
-        private const val status = "Siap Vaksinasi"
-        private const val latitude = "-6.2101653"
-        private const val longitude = "106.8004706"
-        private val detail = listOf(VaksinInfo(1, "test", "test", 1,1,1,1,1,1,1,1,1,"test"))
-    }
 }
 
