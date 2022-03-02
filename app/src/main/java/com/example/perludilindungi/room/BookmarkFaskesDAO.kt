@@ -1,6 +1,7 @@
 package com.example.perludilindungi.room
 
 import android.content.ClipData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -15,8 +16,9 @@ interface BookmarkFaskesDao {
     @Query("SELECT * from bookmarkfaskes ORDER BY id ASC")
     fun getItems(): Flow<List<BookmarkFaskes>>
 
-    @Query("SELECT * from bookmarkfaskes WHERE id = :id")
-    fun getItem(id: Int): Flow<BookmarkFaskes>
+    @Query("SELECT count(*) from bookmarkfaskes WHERE id = :id")
+    fun getCountItem(id: Int): Flow<Int>
+
 
     // Specify the conflict strategy as IGNORE, when the user tries to add an
     // existing Item into the database.

@@ -1,22 +1,44 @@
 package com.example.perludilindungi.room
 
 import android.content.ClipData
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.perludilindungi.models.Faskes
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class BookmarkFaskesViewModel(private val bookmarkFaskesDao: BookmarkFaskesDao) : ViewModel() {
 
-    fun checkBookmark(id: Int): Boolean {
-        return bookmarkFaskesDao.getItem(id) == null
+    var bookmarks: MutableLiveData<List<BookmarkFaskes>> = MutableLiveData()
+    var selectedFaskesBookmaraked: MutableLiveData<Boolean> = MutableLiveData()
+
+    fun checkBookmark(id: Int) {
+        viewModelScope.launch {
+            bookmarkFaskesDao.getCountItem(id).collect {
+                Log.d("DebugID", "selected id $id = $it")
+                selectedFaskesBookmaraked.value = (it != 0)
+            }
+        }
     }
 
     fun addNewBookmark(faskes: Faskes) {
         val newBookmark = getNewBookmark(faskes)
         viewModelScope.launch {
             bookmarkFaskesDao.insert(newBookmark)
+        }
+    }
+
+
+    fun getAllBookmark(){
+        viewModelScope.launch {
+            bookmarkFaskesDao.getItems().collect {
+                bookmarks.value = it
+            }
         }
     }
 

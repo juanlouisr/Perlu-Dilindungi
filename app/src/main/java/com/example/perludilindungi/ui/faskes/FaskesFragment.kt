@@ -36,7 +36,7 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
 
     override fun onResume() {
         super.onResume()
@@ -190,7 +190,8 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
         val fragmentTsx = fragmentManager?.beginTransaction()
         fragmentTsx?.replace(
             binding.fragmentContaionerRview.id,
-            ListFaskesFragmentFactory().newFragment(viewModel.daftarFaskes)
+            ListFaskesFragmentFactory().newFragment(viewModel.daftarFaskes,
+                "Faskes")
         )
         fragmentTsx?.commit()
         if (fragmentTsx == null) {

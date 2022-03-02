@@ -3,6 +3,7 @@ package com.example.perludilindungi.ui.detailfaskes
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.example.perludilindungi.models.Faskes
 import com.example.perludilindungi.models.VaksinInfo
 import com.example.perludilindungi.room.BookmarkFaskesViewModel
 import com.example.perludilindungi.room.BookmarkFaskesViewModelFactory
+import kotlinx.android.synthetic.main.fragment_detail_faskes.*
 
 
 class DetailFaskesFragment : Fragment() {
@@ -29,6 +31,16 @@ class DetailFaskesFragment : Fragment() {
         BookmarkFaskesViewModelFactory(
             (activity?.application as CreateDBApplication).database.bookmarkFaskesDao()
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.checkBookmark(faskes.id)
+        viewModel.selectedFaskesBookmaraked.observe(viewLifecycleOwner) { response ->
+            binding.bookmark.text = if (response) "- Bookmark" else "+ Bookmark"
+            Log.d("Debug", "selected id $id = $response")
+
+        }
     }
 
     override fun onCreateView(
@@ -53,11 +65,13 @@ class DetailFaskesFragment : Fragment() {
         if (faskes.status != "Siap Vaksinasi") {
             binding.statusImage.setImageResource(R.drawable.ic_resource_false)
         }
-        if (!checkIsBookmarked()){
-            binding.bookmark.text = "- Bookmark"
-        }
-        else{
-            binding.bookmark.text = "+ Bookmark"
+
+        binding.bookmark.setOnClickListener {
+            if (binding.bookmark.text.toString() == "+ Bookmark") {
+                addNewBookmark()
+            } else {
+                deleteBookmark()
+            }
         }
 
         //Google Map
@@ -66,15 +80,6 @@ class DetailFaskesFragment : Fragment() {
         }
 
         //Bookmark
-        binding.bookmark.setOnClickListener {
-            if (binding.bookmark.text == "+ Bookmark") {
-                addNewBookmark()
-                binding.bookmark.text = "- Bookmark"
-            } else {
-                deleteBookmark()
-                binding.bookmark.text = "+ Bookmark"
-            }
-        }
 
     }
 
@@ -91,9 +96,9 @@ class DetailFaskesFragment : Fragment() {
         startActivity(mapIntent)
     }
 
-    private fun checkIsBookmarked(): Boolean {
-        return viewModel.checkBookmark(id)
-    }
+//    private fun checkIsBookmarked(): Boolean {
+//        return viewModel.checkBookmark(id)
+//    }
 
     private fun addNewBookmark() {
         viewModel.addNewBookmark(faskes)
