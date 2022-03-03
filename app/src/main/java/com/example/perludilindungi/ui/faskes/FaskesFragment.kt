@@ -54,7 +54,7 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
                 .toList())
             val arrayAdapter = ArrayAdapter(
                 requireContext(), R.layout
-                    .text_item, viewModel.cities
+                    .item_text, viewModel.cities
             )
             Log.d(
                 "Response", response.results.toString()
@@ -115,7 +115,7 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
             .toList())
         val arrayAdapter = ArrayAdapter(
             requireContext(), R.layout
-                .text_item, viewModel.provinces
+                .item_text, viewModel.provinces
         )
         binding.autoCompleteTextViewProvince.setAdapter(arrayAdapter)
     }
@@ -129,7 +129,7 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
                 .toList())
             val arrayAdapter = ArrayAdapter(
                 requireContext(), R.layout
-                    .text_item, viewModel.cities
+                    .item_text, viewModel.cities
             )
             Log.d(
                 "Response", response.results.toString()
@@ -292,7 +292,7 @@ class FaskesFragment : Fragment(R.layout.fragment_faskes) {
 
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(p0: LocationResult) {
-            var lastLoc: Location = p0.lastLocation
+            val lastLoc: Location = p0.lastLocation
             viewModel.latitude = lastLoc.latitude.toDouble()
             viewModel.longitude = lastLoc.longitude.toDouble()
         }

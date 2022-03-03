@@ -3,7 +3,7 @@
     android:id="@+id/item_text_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Kota/Provinsi"
+    android:text="@string/kota_provinsi"
     android:padding="14dp"
     android:textColor="@android:color/black">
 
