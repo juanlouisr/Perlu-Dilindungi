@@ -16,9 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PerluDilindungi">
         <activity
-            android:name=".ui.berita.DetailBeritaActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.landingpage.LandingPage"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
