@@ -17,7 +17,7 @@
         android:background="@drawable/edittext_style"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:text="url"
+        android:text="@string/url"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/webview_detail_berita"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -101,4 +101,25 @@
     <string name="nama_faskes_placeholder">Puskesmas Ciputat Timur</string>
     <string name="telp_faskes_placeholder">Telp :</string>
     <string name="kode_faskes_placeholder">Kode :</string>
+    <string name="kode_faskes">10040305</string>
+    <string name="fasilitas_ini">Fasilitas ini</string>
+    <string name="status_siap_vaksin">SIAP VAKSINASI</string>
+    <string name="telp_faskes">(0215) 8221047</string>
+    <string name="google_maps">Google Maps</string>
+    <string name="add_bookmark">+ Bookmark</string>
+    <string name="gambar_status_vaksinasi">gambar_status_vaksinasi</string>
+    <string name="url">url</string>
+    <string name="daftar_faskes">Daftar Faskes</string>
+    <string name="news_headline">News Covid 19</string>
+    <string name="landing_page_logo">Landing Page Logo</string>
+    <string name="scan">SCAN</string>
+    <string name="scan_message">Tap the icon below to scan</string>
+    <string name="back">Back</string>
+    <string name="derajat_celcius">℃</string>
+    <string name="gambar_status">Gambar Status</string>
+    <string name="tanggal_place_holder">date : …</string>
+    <string name="thumbnail_berita">Thumbnail Berita</string>
+    <string name="search">Search</string>
+    <string name="city">City</string>
+    <string name="kota_provinsi">Kota/Provinsi</string>
 </resources>

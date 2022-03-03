@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Nama Faskes"
+        android:text="@string/nama_faskes_placeholder"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Kode : "
+        android:text="@string/kode_faskes_placeholder"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="10040305"
+        android:text="@string/kode_faskes"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/kode"
@@ -49,7 +49,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="#EF5DA8"
-        android:text="RUMAH SAKIT"
+        android:text="@string/jenis_faskes_placeholder"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -61,7 +61,7 @@
         android:id="@+id/status_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fasilitas ini"
+        android:text="@string/fasilitas_ini"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -73,7 +73,7 @@
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIAP VAKSINASI"
+        android:text="@string/status_siap_vaksin"
         android:textAlignment="center"
         android:textSize="27sp"
         android:textStyle="bold"
@@ -88,7 +88,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Alamat"
+        android:text="@string/alamat_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kode" />
@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
-        android:text="No Telp: "
+        android:text="@string/telp_faskes_placeholder"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alamat" />
 
@@ -108,7 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="(0215) 8221047"
+        android:text="@string/telp_faskes"
         app:layout_constraintStart_toEndOf="@+id/telp"
         app:layout_constraintTop_toBottomOf="@+id/alamat" />
 
@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="#5D5FEF"
-        android:text="Google Maps"
+        android:text="@string/google_maps"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#EF5DA8"
-        android:text="+ Bookmark"
+        android:text="@string/add_bookmark"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +143,8 @@
         android:src="@drawable/ic_resource_true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/no_telp" />
+        app:layout_constraintTop_toBottomOf="@+id/no_telp"
+        android:contentDescription="@string/gambar_status_vaksinasi"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
