@@ -5,29 +5,29 @@ Aplikasi Perlu Dilindungi adalah aplikasi berbasis Android yang dibangun menggun
 
 ## Cara Kerja
 Aplikasi Perlu Dilindungi yang kami buat terdiri dari 5 fitur utama, antara lain:
-1. Menampilkan Berita COVID-19 \n
-Untuk melihat daftar berita COVID-19, Anda dapat menekan tombol "Berita" yang ada pada bottom navigation.\n
-Kemudian untuk melihat detail dari daftar berita yang ditampilkan, Anda hanya perlu menekan salah satu item pada daftar tersebut. Lalu akan tampil detail berita dari item yang Anda tekan dalam bentuk webview.\n
+1. Menampilkan Berita COVID-19 <br />
+Untuk melihat daftar berita COVID-19, Anda dapat menekan tombol "Berita" yang ada pada bottom navigation.<br />
+Kemudian untuk melihat detail dari daftar berita yang ditampilkan, Anda hanya perlu menekan salah satu item pada daftar tersebut. Lalu akan tampil detail berita dari item yang Anda tekan dalam bentuk webview.<br />
 
-2. Menampilkan Daftar Faskes untuk Vaksinasi \n
-Untuk melakukan pencarian faskes, Anda dapat menekan tombol "Faskes" yang ada pada bottom navigation.\n
-Pada halaman pencarian faskes ini, Anda perlu memilih provinsi dan kabupaten/kota lokasi faskes yang ingin dicari terlebih dahulu. Setelah itu, Anda dapat menekan tombol "Search" yang akan menampilkan maksimal lima daftar faskes terdekat berdasarkan lokasi yang Anda masukkan.\n
-Halaman daftar faskes ini memiliki layout yang responsive sehingga dapat ditampilan secara potrait maupun landscape.\n
+2. Menampilkan Daftar Faskes untuk Vaksinasi <br />
+Untuk melakukan pencarian faskes, Anda dapat menekan tombol "Faskes" yang ada pada bottom navigation.<br />
+Pada halaman pencarian faskes ini, Anda perlu memilih provinsi dan kabupaten/kota lokasi faskes yang ingin dicari terlebih dahulu. Setelah itu, Anda dapat menekan tombol "Search" yang akan menampilkan maksimal lima daftar faskes terdekat berdasarkan lokasi yang Anda masukkan.<br />
+Halaman daftar faskes ini memiliki layout yang responsive sehingga dapat ditampilan secara potrait maupun landscape.<br />
 
-3. Menampilkan Detail Informasi Faskes \n
-Untuk melihat detail informasi dari faskes yang telah ditampilkan pada daftar hasil pencarian faskes, Anda hanya perlu menekan salah satu item pada daftar. Lalu akan tampil detail faskes dari item yang Anda tekan.\n
-Anda dapat melakukan bookmark untuk item faskes tersebut dengan menekan tombol "+BOOKMARK" ataupun melakukan un-bookmark dengan menekan tombol "-BOOKMARK" yang ada pada halaman detail faskes.\n
-Anda juga dapat membuka Google Maps untuk melihat lokasi faskes tersebut dengan menekan tombol "GOOGLE MAPS".\n
+3. Menampilkan Detail Informasi Faskes <br />
+Untuk melihat detail informasi dari faskes yang telah ditampilkan pada daftar hasil pencarian faskes, Anda hanya perlu menekan salah satu item pada daftar. Lalu akan tampil detail faskes dari item yang Anda tekan.<br />
+Anda dapat melakukan bookmark untuk item faskes tersebut dengan menekan tombol "+BOOKMARK" ataupun melakukan un-bookmark dengan menekan tombol "-BOOKMARK" yang ada pada halaman detail faskes.<br />
+Anda juga dapat membuka Google Maps untuk melihat lokasi faskes tersebut dengan menekan tombol "GOOGLE MAPS".<br />
 
-4. Menampilkan Daftar Bookmark Faskes \n
-Untuk melihat daftar faskes yang sudah Anda bookmark, Anda dapat menekan tombol "Bookmark" yang ada pada bottom navigation.\n
-Untuk melihat detail dari faskes yang berada pada daftar bookmark ini, Anda hanya perlu menekan salah satu item yang ada pada daftar tersebut. Lalu akan tampil detail faskes dari item yang Anda tekan.\n
-Untuk menghapus suatu item faskes pada daftar bookmark faskes, Anda pada melakukan un-bookmark dengan menekan tombol "-BOOKMARK" yang ada pada halaman detail faskes.\n
+4. Menampilkan Daftar Bookmark Faskes <br />
+Untuk melihat daftar faskes yang sudah Anda bookmark, Anda dapat menekan tombol "Bookmark" yang ada pada bottom navigation.<br />
+Untuk melihat detail dari faskes yang berada pada daftar bookmark ini, Anda hanya perlu menekan salah satu item yang ada pada daftar tersebut. Lalu akan tampil detail faskes dari item yang Anda tekan.<br />
+Untuk menghapus suatu item faskes pada daftar bookmark faskes, Anda pada melakukan un-bookmark dengan menekan tombol "-BOOKMARK" yang ada pada halaman detail faskes.<br />
 
-5. Melakukan "Check-In" \n
-Untuk melakukan check-in, Anda perlu masuk ke halaman QR Code Scanner dengan menekan floating button yang berapa pada kanan bawah layar.\n
-Pada halaman QR Code Scanner akan ditampilkan informasi suhu kamar pada kanan atas layar.\n
-Untuk melakukan scanning, Anda perlu menekan icon yang ada pada tengah layar. Lalu aplikasi akan meminta izin untuk mengakses kamera android Anda. Setelah akses diberikan, Anda hanya perlu mengarahkan kamera Anda pada QR Code yang Anda miliki. Ketika proses scanning berhasil, status Anda akan ditampilkan berdasarkan pembacaan QR Code yang telah dilakukan. Akan ditampilkan alasan jika status Anda red atau black. \n
+5. Melakukan "Check-In" <br />
+Untuk melakukan check-in, Anda perlu masuk ke halaman QR Code Scanner dengan menekan floating button yang berapa pada kanan bawah layar.<br />
+Pada halaman QR Code Scanner akan ditampilkan informasi suhu kamar pada kanan atas layar.<br />
+Untuk melakukan scanning, Anda perlu menekan icon yang ada pada tengah layar. Lalu aplikasi akan meminta izin untuk mengakses kamera android Anda. Setelah akses diberikan, Anda hanya perlu mengarahkan kamera Anda pada QR Code yang Anda miliki. Ketika proses scanning berhasil, status Anda akan ditampilkan berdasarkan pembacaan QR Code yang telah dilakukan. Akan ditampilkan alasan jika status Anda red atau black. <br />
 
 ## Library
 1. Retrofit (Mengambil data dari API)
