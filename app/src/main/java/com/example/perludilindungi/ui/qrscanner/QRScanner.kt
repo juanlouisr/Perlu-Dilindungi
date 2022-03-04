@@ -95,6 +95,7 @@ class QRScanner : AppCompatActivity(), SensorEventListener {
                         if (response.data.userStatus == "green"){
                             binding.statusImage.setImageResource(R.drawable.ic_resource_true)
                             binding.status.text = "Berhasil"
+                            binding.keterangan.text = response.data.reason
                         }
                         else{
                             binding.statusImage.setImageResource(R.drawable.ic_resource_false)
