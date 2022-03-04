@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.detailfaskes.DetailFaskesFragment">
+    tools:context=".ui.detailfaskes.DetailFaskesFragment"
+    android:padding="8dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/nama_faskes"
         android:layout_width="match_parent"
@@ -17,7 +17,8 @@
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/kode"
@@ -51,7 +52,7 @@
         android:background="#EF5DA8"
         android:text="@string/jenis_faskes_placeholder"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="#311B92"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +68,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status_image" />
+        app:layout_constraintTop_toBottomOf="@+id/status_image"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/status"
@@ -79,7 +81,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/status_desc" />
+        app:layout_constraintTop_toBottomOf="@+id/status_desc"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/alamat"
@@ -91,7 +94,8 @@
         android:text="@string/alamat_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kode" />
+        app:layout_constraintTop_toBottomOf="@+id/kode"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/telp"
@@ -101,7 +105,8 @@
         android:layout_marginStart="8dp"
         android:text="@string/telp_faskes_placeholder"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/alamat" />
+        app:layout_constraintTop_toBottomOf="@+id/alamat"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/no_telp"
@@ -110,7 +115,8 @@
         android:layout_marginTop="8dp"
         android:text="@string/telp_faskes"
         app:layout_constraintStart_toEndOf="@+id/telp"
-        app:layout_constraintTop_toBottomOf="@+id/alamat" />
+        app:layout_constraintTop_toBottomOf="@+id/alamat"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/google_map"
@@ -139,7 +145,7 @@
         android:id="@+id/status_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/ic_resource_true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

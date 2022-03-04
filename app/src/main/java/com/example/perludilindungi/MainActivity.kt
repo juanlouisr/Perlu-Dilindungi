@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(){
         setContentView(binding.root)
 
         supportActionBar?.hide();
+        window.navigationBarColor = resources.getColor(R.color.dark_blue)
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_bottom_navigation)
         val fab = binding.fab

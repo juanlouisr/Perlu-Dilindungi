@@ -1,6 +1,7 @@
 package com.example.perludilindungi.ui.detailfaskes
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -65,6 +66,16 @@ class DetailFaskesFragment : Fragment() {
         if (faskes.status != "Siap Vaksinasi") {
             binding.statusImage.setImageResource(R.drawable.ic_resource_false)
         }
+
+        binding.tipeFaskes.setBackgroundColor(
+            when(faskes.jenis_faskes) {
+                "" -> Color.WHITE
+                "RUMAH SAKIT" -> Color.parseColor("#52f280")
+                "PUSKESMAS" -> Color.parseColor("#f8a6ff")
+                "KLINIK" -> Color.parseColor("#fcffa6")
+                else -> Color.parseColor("#79d6f2")
+            }
+        )
 
         binding.bookmark.setOnClickListener {
             if (binding.bookmark.text.toString() == "+ Bookmark") {

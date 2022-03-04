@@ -1,5 +1,6 @@
 package com.example.perludilindungi.ui.faskes
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.perludilindungi.R
 import com.example.perludilindungi.models.Faskes
-import com.example.perludilindungi.ui.berita.NewsAdapter
 import com.google.android.material.card.MaterialCardView
 
 class FaskesRecyclerViewAdapter(private val daftarFaskes: List<Faskes>) :
@@ -18,7 +18,6 @@ class FaskesRecyclerViewAdapter(private val daftarFaskes: List<Faskes>) :
 
     class FaskesAdapterViewHolder(private val view: View, listener: OnItemClickListener) : RecyclerView
     .ViewHolder(view) {
-        val faskesCard: MaterialCardView = view.findViewById(R.id.faskes_card)
         val namaFaskes: TextView = view.findViewById(R.id.tview_nama_faskes)
         val jenisFaskes: TextView = view.findViewById(R.id.tview_jenis_faskes)
         val alamatFaskes: TextView = view.findViewById(R.id.tview_alamat_faskes)
@@ -55,24 +54,25 @@ class FaskesRecyclerViewAdapter(private val daftarFaskes: List<Faskes>) :
     ) {
         val item = daftarFaskes[position]
         holder.namaFaskes.text = item.nama
-//        when (item.jenis_faskes) {
-//            "PUSKESMAS" ->
-//        }
-        if (item.jenis_faskes == "") {
-            val layoutParams = holder.jenisFaskes.layoutParams
-            layoutParams.width = 0
-            holder.jenisFaskes.width = layoutParams.width
-        }
+        holder.jenisFaskes.setBackgroundColor(
+            when(item.jenis_faskes) {
+                "" -> Color.WHITE
+                "RUMAH SAKIT" -> Color.parseColor("#52f280")
+                "PUSKESMAS" -> Color.parseColor("#f8a6ff")
+                "KLINIK" -> Color.parseColor("#fcffa6")
+                else -> Color.parseColor("#79d6f2")
+            }
+        )
         holder.jenisFaskes.text = item.jenis_faskes
-        holder.alamatFaskes.text = item.alamat
+        item.alamat?.let {
+            holder.alamatFaskes.text = item.alamat
+        }
         item.telp?.let {
             holder.notelpFaskes.text = "Telp : " + item.telp
         }
         holder.kodeFaskes.text = "Kode : " + item.kode
     }
 
-    override fun getItemCount(): Int {
-        return daftarFaskes.size
-    }
+    override fun getItemCount(): Int = daftarFaskes.size
 
 }

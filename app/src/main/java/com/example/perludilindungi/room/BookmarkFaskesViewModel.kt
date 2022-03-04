@@ -50,16 +50,24 @@ class BookmarkFaskesViewModel(private val bookmarkFaskesDao: BookmarkFaskesDao) 
     }
 
     private fun getNewBookmark(faskes: Faskes): BookmarkFaskes {
+        var alamat = ""
+        var telp = ""
+        if (faskes.telp != null) {
+            telp = faskes.telp
+        }
+        if (faskes.alamat != null) {
+            alamat = faskes.alamat
+        }
         return BookmarkFaskes(
             id = faskes.id,
             kode = faskes.kode,
             nama = faskes.nama,
             kota = faskes.kota,
             provinsi = faskes.provinsi,
-            alamat = faskes.alamat,
+            alamat = alamat,
             latitude = faskes.latitude,
             longitude = faskes.longitude,
-            telp = faskes.telp,
+            telp = telp,
             jenis_faskes = faskes.jenis_faskes,
             kelas_rs = faskes.kelas_rs,
             status = faskes.status,
