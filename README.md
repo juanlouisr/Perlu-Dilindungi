@@ -9,12 +9,50 @@ Aplikasi Perlu Dilindungi adalah aplikasi berbasis Android yang dibangun menggun
 1. Retrofit (Mengambil data dari API)
 2. Room (Penyimpanan SQLite secara lokal untuk Bookmark)
 3. Zxing (Scan QR Code)
+4. Google Material.io (Material Design)
 
 ## Screenshot
 
+
+    Halaman Splash Screen
+
+<img src="readme-img/splashscreen.png" alt="drawing" width="200"/>
+
+    Halaman News
+
+<p float="left">
+<img src="readme-img/news.png" alt="drawing" width="200"/>
+<img src="readme-img/news_detail.png" alt="drawing" width="200"/>
+</p>
+
+    Halaman Faskes
+
+<p float="left">
+<img src="readme-img/faskes.png" alt="drawing" width="200"/>
+<img src="readme-img/faskes_detail.png" alt="drawing" width="200"/>
+</p>
+
+<img src="readme-img/faskes_land.png" alt="drawing" width="400"/>
+
+
+    Halaman Boomark
+
+<p float="left">
+<img src="readme-img/bookmark.png" alt="drawing" width="200"/>
+<img src="readme-img/bookmark_detail.png" alt="drawing" width="200"/>
+</p>
+
+    Halaman QRCode
+
+<p float="left">
+<img src="readme-img/qrcode.png" alt="drawing" width="200"/>
+<img src="readme-img/qrcode_success.png" alt="drawing" width="200"/>
+<img src="readme-img/qrcode_failure.png" alt="drawing" width="200"/>
+</p>
+
 ## Pembagian Kerja
-- Juan Louis Rombetasik (13519075) : 
-- Nabila Hannania (13519097) : 
+- Juan Louis Rombetasik (13519075) : Daftar Faskes, Bookmark Faskes
+- Nabila Hannania (13519097) :
 - Jordan Daniel Joshua (13519098) : Room, QRCode, Detail Faskes
 
 
