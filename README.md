@@ -1,4 +1,4 @@
-r# IF3210-2022-Android-20
+# IF3210-2022-Android-20
 
 ## Deskripsi
 Aplikasi Perlu Dilindungi adalah aplikasi berbasis Android yang dibangun menggunakan bahasa Kotlin. Aplikasi ini merupakan aplikasi kesehatan yang bertujuan untuk memberikan info kesehatan kepada masyarakat khususnya di masa pandemi ini. Info tersebut berupa berita-berita terkait COVID dan daftar fasilitas kesehatan yang ada di Indonesia. Selain hal-hal tersebut, aplikasi ini juga memiliki fitur checkin yang mana penggunanya bisa masuk ke suatu tempat dengan scan QR Code yang ada.
@@ -36,12 +36,14 @@ Dipakai untuk fetch data dari API menggunakan metode HTTP GET dan POST.
 Untuk menyimpan data bookmark faskes dari pengguna di lokal.
 3. Zxing <br />
 Untuk melakukan scan QRCode yang digunakan untuk fungsi check in. Data yang dihasilkan dari scan berupa string yang kemudian bisa digunakan untuk mendapatkan hasil check ini dari API.
-4. Google Material.icon <br />
+4. Google Material Design <br />
 Untuk kepentingan design dari aplikasi secara UI.
 5. Glide <br />
 Untuk melakukan image loader pada bagian daftar berita.
 6. Data Binding <br />
 Untuk melakukan binding komponen UI ke source data yang ada sehingga proses pengaksesan komponen UI menjadi lebih mudah dan efisien.
+7. Kotlin Coroutine <br />
+Menjalankan Metode asynchronous
 
 ## Screenshot
 
