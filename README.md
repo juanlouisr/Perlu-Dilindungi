@@ -30,17 +30,17 @@ Pada halaman QR Code Scanner akan ditampilkan informasi suhu kamar pada kanan at
 Untuk melakukan scanning, Anda perlu menekan icon yang ada pada tengah layar. Lalu aplikasi akan meminta izin untuk mengakses kamera android Anda. Setelah akses diberikan, Anda hanya perlu mengarahkan kamera Anda pada QR Code yang Anda miliki. Ketika proses scanning berhasil, status Anda akan ditampilkan berdasarkan pembacaan QR Code yang telah dilakukan. Akan ditampilkan alasan jika status Anda red atau black. <br />
 
 ## Library
-1. Retrofit
+1. Retrofit <br />
 Dipakai untuk fetch data dari API menggunakan metode HTTP GET dan POST.
-2. Room
+2. Room <br />
 Untuk menyimpan data bookmark faskes dari pengguna di lokal.
-3. Zxing
+3. Zxing <br />
 Untuk melakukan scan QRCode yang digunakan untuk fungsi check in. Data yang dihasilkan dari scan berupa string yang kemudian bisa digunakan untuk mendapatkan hasil check ini dari API.
-4. Google Material.icon
+4. Google Material.icon <br />
 Untuk kepentingan design dari aplikasi secara UI.
-5. Glide
+5. Glide <br />
 Untuk melakukan image loader pada bagian daftar berita.
-6. Data Binding
+6. Data Binding <br />
 Untuk melakukan binding komponen UI ke source data yang ada sehingga proses pengaksesan komponen UI menjadi lebih mudah dan efisien.
 
 ## Screenshot
