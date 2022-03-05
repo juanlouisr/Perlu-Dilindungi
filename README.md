@@ -76,7 +76,7 @@ Untuk melakukan scanning, Anda perlu menekan icon yang ada pada tengah layar. La
 </p>
 
 ## Pembagian Kerja
-- Juan Louis Rombetasik (13519075) : Daftar Faskes, Bookmark Faskes
+- Juan Louis Rombetasik (13519075) : Daftar Faskes, Bookmark Faskes, Navigation
 - Nabila Hannania (13519097) : Landing Page (Splash Screen), Daftar Berita, Detail Berita
 - Jordan Daniel Joshua (13519098) : Room, QRCode, Detail Faskes
 
